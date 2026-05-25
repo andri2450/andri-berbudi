@@ -1,587 +1,790 @@
-<!-- index.php -->
+<!-- ===================================================== -->
+<!-- ANDRI BERBUDI - ULTRA PREMIUM CYBER LANDING PAGE -->
+<!-- FULL SINGLE FILE PHP -->
+<!-- ===================================================== -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Andri Berbudi | Web Developer & SEO Specialist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Andri Berbudi personal branding website. Web Developer, SEO Specialist, Entrepreneur.">
-  <meta name="keywords" content="Andri Berbudi, Web Developer, SEO Specialist, Personal Branding">
+<title>Andri Berbudi | Web Developer & SEO Specialist</title>
 
-  <meta property="og:title" content="Andri Berbudi">
-  <meta property="og:description" content="Web Developer & SEO Specialist">
-  <meta property="og:type" content="website">
+<meta name="description" content="Andri Berbudi - Premium Personal Branding Website">
+<meta name="keywords" content="Andri Berbudi, Web Developer, SEO Specialist">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<style>
 
-    html{
-      scroll-behavior:smooth;
-    }
+:root{
+  --bg:#050505;
+  --red:#ff2020;
+  --soft:#9b9b9b;
+}
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:#050505;
-      color:white;
-      overflow-x:hidden;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    #particles-js{
-      position:fixed;
-      width:100%;
-      height:100%;
-      z-index:-2;
-      top:0;
-      left:0;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    .bg-glow{
-      position:fixed;
-      width:700px;
-      height:700px;
-      background:red;
-      filter:blur(180px);
-      opacity:.12;
-      border-radius:50%;
-      top:-200px;
-      right:-150px;
-      z-index:-1;
-      animation:floatGlow 10s ease-in-out infinite;
-    }
+body{
+  background:var(--bg);
+  color:white;
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
 
-    @keyframes floatGlow{
-      0%{transform:translateY(0px);}
-      50%{transform:translateY(30px);}
-      100%{transform:translateY(0px);}
-    }
+/* ========================= */
+/* CUSTOM CURSOR */
+/* ========================= */
 
-    .gradient-text{
-      background:linear-gradient(to right,#fff,#ff3b3b);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.cursor{
+  width:20px;
+  height:20px;
+  border:1px solid rgba(255,0,0,.5);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:.08s linear;
+  backdrop-filter:blur(4px);
+}
 
-    .glass{
-      background:rgba(255,255,255,0.04);
-      backdrop-filter:blur(14px);
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.cursor-dot{
+  width:4px;
+  height:4px;
+  background:red;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:99999;
+  transform:translate(-50%,-50%);
+}
 
-    .card-hover{
-      transition:.4s;
-    }
+/* ========================= */
+/* NOISE */
+/* ========================= */
 
-    .card-hover:hover{
-      transform:translateY(-10px);
-      border-color:#ff2d2d;
-      box-shadow:0 0 40px rgba(255,0,0,.15);
-    }
+.noise{
+  position:fixed;
+  inset:0;
+  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity:.05;
+  pointer-events:none;
+  z-index:2;
+}
 
-    .typing{
-      border-right:3px solid red;
-      white-space:nowrap;
-      overflow:hidden;
-      display:inline-block;
-      animation:blink .7s infinite;
-    }
+/* ========================= */
+/* GRID */
+/* ========================= */
 
-    @keyframes blink{
-      50%{
-        border-color:transparent;
-      }
-    }
+.grid-bg{
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  z-index:-3;
+}
 
-    .btn-premium{
-      position:relative;
-      overflow:hidden;
-    }
+/* ========================= */
+/* RED GLOW */
+/* ========================= */
 
-    .btn-premium::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:-100%;
-      width:100%;
-      height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-      transition:.6s;
-    }
+.glow{
+  position:fixed;
+  width:800px;
+  height:800px;
+  background:red;
+  border-radius:50%;
+  filter:blur(220px);
+  opacity:.08;
+  top:-300px;
+  right:-200px;
+  z-index:-2;
+  animation:floatGlow 12s infinite ease-in-out;
+}
 
-    .btn-premium:hover::before{
-      left:100%;
-    }
+@keyframes floatGlow{
+  0%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(50px);
+  }
+  100%{
+    transform:translateY(0);
+  }
+}
 
-    .section-title{
-      font-size:42px;
-      font-weight:800;
-      margin-bottom:20px;
-    }
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
 
-    .section-sub{
-      color:#999;
-      max-width:700px;
-      line-height:1.8;
-    }
+.nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(16px);
+  background:rgba(5,5,5,.6);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
 
-    .noise{
-      position:fixed;
-      inset:0;
-      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-      opacity:.05;
-      z-index:-1;
-      pointer-events:none;
-    }
+.logo{
+  font-weight:900;
+  font-size:28px;
+  background:linear-gradient(to right,#fff,#ff4b4b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-    @media(max-width:768px){
-      .hero-title{
-        font-size:58px !important;
-      }
-    }
-  </style>
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-title{
+  font-size:110px;
+  line-height:1;
+  font-weight:900;
+  font-family:'Space Grotesk',sans-serif;
+  letter-spacing:-4px;
+}
+
+.gradient{
+  background:linear-gradient(to right,#fff,#ff3131);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  font-size:26px;
+  color:#aaa;
+  margin-top:30px;
+  min-height:40px;
+}
+
+.hero-desc{
+  color:#777;
+  line-height:2;
+  max-width:700px;
+  margin-top:35px;
+  font-size:18px;
+}
+
+.typing{
+  border-right:3px solid red;
+  animation:blink .7s infinite;
+}
+
+@keyframes blink{
+  50%{
+    border-color:transparent;
+  }
+}
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+.btn-premium{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:18px 35px;
+  border-radius:100px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ff2020,#8b0000);
+  transition:.4s;
+  font-weight:700;
+}
+
+.btn-premium:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 60px rgba(255,0,0,.35);
+}
+
+.btn-premium::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transition:.8s;
+}
+
+.btn-premium:hover::before{
+  left:100%;
+}
+
+/* ========================= */
+/* FLOATING CARD */
+/* ========================= */
+
+.terminal{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  border-radius:30px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  animation:floatCard 6s infinite ease-in-out;
+  box-shadow:0 30px 100px rgba(255,0,0,.08);
+}
+
+@keyframes floatCard{
+  0%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-15px);
+  }
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+.terminal-top{
+  padding:18px 24px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  display:flex;
+  gap:10px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+}
+
+.dot.red{
+  background:#ff3b30;
+}
+
+.dot.yellow{
+  background:#ffcc00;
+}
+
+.dot.green{
+  background:#34c759;
+}
+
+.terminal-body{
+  padding:35px;
+  color:#32ff7e;
+  font-family:monospace;
+  line-height:2;
+  font-size:15px;
+}
+
+/* ========================= */
+/* SECTION */
+/* ========================= */
+
+.section{
+  padding:140px 0;
+  position:relative;
+}
+
+.section-title{
+  font-size:70px;
+  font-weight:900;
+  margin-bottom:20px;
+  letter-spacing:-3px;
+}
+
+.section-desc{
+  color:#777;
+  line-height:2;
+  max-width:700px;
+}
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:30px;
+  padding:40px;
+  transition:.5s;
+  overflow:hidden;
+  position:relative;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,0,0,.06),transparent);
+  opacity:0;
+  transition:.5s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(255,0,0,.2);
+  box-shadow:0 20px 80px rgba(255,0,0,.08);
+}
+
+/* ========================= */
+/* BIG NUMBER */
+/* ========================= */
+
+.big-number{
+  font-size:80px;
+  font-weight:900;
+  color:rgba(255,255,255,.06);
+  position:absolute;
+  right:30px;
+  top:20px;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:900px){
+
+.hero-title{
+  font-size:64px;
+}
+
+.section-title{
+  font-size:48px;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<div id="particles-js"></div>
-<div class="bg-glow"></div>
+<!-- CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<!-- BG -->
 <div class="noise"></div>
+<div class="grid-bg"></div>
+<div class="glow"></div>
 
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 glass">
-  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-    
-    <h1 class="text-2xl font-black gradient-text">
-      Andri Berbudi
-    </h1>
+<!-- NAV -->
+<nav class="nav">
 
-    <div class="hidden md:flex gap-8 text-sm text-gray-300">
-      <a href="#about" class="hover:text-red-500 transition">About</a>
-      <a href="#services" class="hover:text-red-500 transition">Services</a>
-      <a href="#portfolio" class="hover:text-red-500 transition">Portfolio</a>
-      <a href="#blog" class="hover:text-red-500 transition">Blog</a>
-      <a href="#contact" class="hover:text-red-500 transition">Contact</a>
-    </div>
+<div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
 
-  </div>
+<div class="logo">
+Andri Berbudi
+</div>
+
+<div class="hidden md:flex gap-10 text-sm text-gray-400">
+
+<a href="#about" class="hover:text-red-500 transition">About</a>
+<a href="#services" class="hover:text-red-500 transition">Expertise</a>
+<a href="#work" class="hover:text-red-500 transition">Works</a>
+<a href="#blog" class="hover:text-red-500 transition">Blog</a>
+
+</div>
+
+</div>
+
 </nav>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center px-6">
+<section class="hero px-6">
 
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
 
-    <div>
+<!-- LEFT -->
+<div>
 
-      <p class="text-red-500 uppercase tracking-[4px] mb-6">
-        Personal Branding
-      </p>
+<p class="uppercase tracking-[6px] text-red-500 mb-8">
+Digital Architect
+</p>
 
-      <h1 class="hero-title text-7xl font-black leading-tight mb-6">
-        Building Modern <span class="gradient-text">Digital Experience</span>
-      </h1>
+<h1 class="hero-title mb-8">
+ANDRI <br>
+<span class="gradient">BERBUDI</span>
+</h1>
 
-      <div class="text-2xl text-gray-300 mb-10">
-        <span id="typing" class="typing"></span>
-      </div>
+<div class="subtitle">
+<span id="typing" class="typing"></span>
+</div>
 
-      <p class="text-gray-400 leading-8 text-lg mb-10 max-w-xl">
-        Helping brands and businesses create premium websites,
-        improve SEO visibility, and build strong digital identity.
-      </p>
+<p class="hero-desc">
+Creating premium digital experiences through modern development,
+advanced SEO strategy, and elegant branding systems for businesses
+that want to stand out in the digital era.
+</p>
 
-      <div class="flex gap-5 flex-wrap">
+<div class="flex gap-5 mt-12 flex-wrap">
 
-        <a href="mailto:info@andriberbudi.com"
-          class="btn-premium bg-red-600 hover:bg-red-700 transition px-8 py-4 rounded-full font-semibold">
-          Contact Me
-        </a>
+<a href="mailto:info@andriberbudi.com" class="btn-premium">
+Contact Me
+</a>
 
-        <a href="#portfolio"
-          class="glass px-8 py-4 rounded-full font-semibold hover:border-red-500 transition">
-          View Portfolio
-        </a>
+</div>
 
-      </div>
+</div>
 
-    </div>
+<!-- RIGHT -->
+<div>
 
-    <!-- RIGHT -->
-    <div class="relative">
+<div class="terminal">
 
-      <div class="glass rounded-[30px] p-10 card-hover">
+<div class="terminal-top">
 
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-          <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-        </div>
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
 
-<pre class="text-green-400 text-sm leading-8 overflow-x-auto">
-$ whoami
+</div>
 
-Andri Berbudi
+<div class="terminal-body">
 
-> Web Developer
-> SEO Specialist
-> Entrepreneur
+$ initialize profile<br><br>
 
-status: online
-building premium digital experience...
-</pre>
+> Name: Andri Berbudi<br>
+> Role: Web Developer<br>
+> Expertise: SEO Specialist<br>
+> Status: Available for projects<br><br>
 
-      </div>
+Loading premium experience...<br>
+████████████████ 100%
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-32 px-6">
+<section class="section px-6" id="about">
 
-  <div class="max-w-6xl mx-auto">
+<div class="max-w-7xl mx-auto">
 
-    <h2 class="section-title">
-      About Me
-    </h2>
+<h2 class="section-title">
+About
+</h2>
 
-    <p class="section-sub text-lg">
-      I specialize in creating modern digital experiences with
-      high-performance websites and advanced SEO strategies.
-      My focus is helping businesses grow online through elegant
-      design, technical excellence, and scalable branding.
-    </p>
+<p class="section-desc text-lg">
+I help businesses and personal brands build high-performance
+digital experiences with modern websites, SEO optimization,
+and elegant branding systems designed for growth.
+</p>
 
-  </div>
+</div>
 
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="py-32 px-6">
+<section class="section px-6" id="services">
 
-  <div class="max-w-7xl mx-auto">
+<div class="max-w-7xl mx-auto">
 
-    <h2 class="section-title">
-      Expertise
-    </h2>
+<h2 class="section-title">
+Expertise
+</h2>
 
-    <div class="grid md:grid-cols-3 gap-8 mt-16">
+<div class="grid lg:grid-cols-3 gap-8 mt-20">
 
-      <div class="glass rounded-[30px] p-10 card-hover">
-        <h3 class="text-2xl font-bold mb-5">
-          Website Development
-        </h3>
+<div class="card">
 
-        <p class="text-gray-400 leading-8">
-          Premium modern websites with responsive UI,
-          fast performance, and professional architecture.
-        </p>
-      </div>
+<div class="big-number">
+01
+</div>
 
-      <div class="glass rounded-[30px] p-10 card-hover">
-        <h3 class="text-2xl font-bold mb-5">
-          SEO Optimization
-        </h3>
+<h3 class="text-3xl font-bold mb-6">
+Website Development
+</h3>
 
-        <p class="text-gray-400 leading-8">
-          Improve rankings, visibility, and organic traffic
-          with technical and content-focused SEO strategy.
-        </p>
-      </div>
+<p class="text-gray-500 leading-8">
+Modern high-performance websites with elegant interface
+and scalable architecture.
+</p>
 
-      <div class="glass rounded-[30px] p-10 card-hover">
-        <h3 class="text-2xl font-bold mb-5">
-          Domain & Hosting
-        </h3>
+</div>
 
-        <p class="text-gray-400 leading-8">
-          Professional hosting setup, domain management,
-          Cloudflare integration, and optimization.
-        </p>
-      </div>
+<div class="card">
 
-    </div>
+<div class="big-number">
+02
+</div>
 
-  </div>
+<h3 class="text-3xl font-bold mb-6">
+SEO Optimization
+</h3>
 
-</section>
+<p class="text-gray-500 leading-8">
+Technical SEO and strategic optimization
+to improve ranking and visibility.
+</p>
 
-<!-- PORTFOLIO -->
-<section id="portfolio" class="py-32 px-6">
+</div>
 
-  <div class="max-w-7xl mx-auto">
+<div class="card">
 
-    <h2 class="section-title">
-      Selected Works
-    </h2>
+<div class="big-number">
+03
+</div>
 
-    <div class="grid lg:grid-cols-3 gap-8 mt-16">
+<h3 class="text-3xl font-bold mb-6">
+Brand Identity
+</h3>
 
-      <div class="glass rounded-[30px] overflow-hidden card-hover">
+<p class="text-gray-500 leading-8">
+Professional digital branding systems
+for modern businesses and creators.
+</p>
 
-        <div class="h-52 bg-gradient-to-br from-red-900 to-black"></div>
+</div>
 
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-3">
-            Business Website
-          </h3>
+</div>
 
-          <p class="text-gray-400">
-            Modern premium company profile website.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="glass rounded-[30px] overflow-hidden card-hover">
-
-        <div class="h-52 bg-gradient-to-br from-zinc-800 to-black"></div>
-
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-3">
-            SEO Growth
-          </h3>
-
-          <p class="text-gray-400">
-            Organic traffic and ranking optimization project.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="glass rounded-[30px] overflow-hidden card-hover">
-
-        <div class="h-52 bg-gradient-to-br from-red-700 to-black"></div>
-
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-3">
-            Landing Page
-          </h3>
-
-          <p class="text-gray-400">
-            High-conversion landing page with modern UI.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 <!-- BLOG -->
-<section id="blog" class="py-32 px-6">
+<section class="section px-6" id="blog">
 
-  <div class="max-w-7xl mx-auto">
+<div class="max-w-7xl mx-auto">
 
-    <h2 class="section-title">
-      Latest Articles
-    </h2>
+<h2 class="section-title">
+Insights
+</h2>
 
-    <div class="grid md:grid-cols-3 gap-8 mt-16">
+<div class="grid lg:grid-cols-3 gap-8 mt-20">
 
-      <div class="glass rounded-[30px] p-8 card-hover">
+<div class="card">
 
-        <p class="text-red-500 text-sm mb-4">
-          SEO
-        </p>
+<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
+SEO
+</p>
 
-        <h3 class="text-2xl font-bold leading-tight mb-5">
-          Why SEO Still Matters in Modern Business
-        </h3>
+<h3 class="text-3xl font-bold leading-tight mb-6">
+Why Technical SEO Still Matters
+</h3>
 
-        <p class="text-gray-400">
-          Learn why technical SEO remains important for digital growth.
-        </p>
+<p class="text-gray-500 leading-8">
+Modern SEO strategies for long-term digital growth.
+</p>
 
-      </div>
+</div>
 
-      <div class="glass rounded-[30px] p-8 card-hover">
+<div class="card">
 
-        <p class="text-red-500 text-sm mb-4">
-          Website
-        </p>
+<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
+Development
+</p>
 
-        <h3 class="text-2xl font-bold leading-tight mb-5">
-          Building High Performance Websites
-        </h3>
+<h3 class="text-3xl font-bold leading-tight mb-6">
+Building Premium User Experience
+</h3>
 
-        <p class="text-gray-400">
-          Best modern practices for fast and premium websites.
-        </p>
+<p class="text-gray-500 leading-8">
+How elegant UI increases trust and conversion.
+</p>
 
-      </div>
+</div>
 
-      <div class="glass rounded-[30px] p-8 card-hover">
+<div class="card">
 
-        <p class="text-red-500 text-sm mb-4">
-          Branding
-        </p>
+<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
+Branding
+</p>
 
-        <h3 class="text-2xl font-bold leading-tight mb-5">
-          Personal Branding for Tech Professionals
-        </h3>
+<h3 class="text-3xl font-bold leading-tight mb-6">
+Personal Branding for Developers
+</h3>
 
-        <p class="text-gray-400">
-          How strong personal branding increases opportunities.
-        </p>
+<p class="text-gray-500 leading-8">
+Build authority and credibility in digital industry.
+</p>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-32 px-6">
+<!-- CTA -->
+<section class="section px-6">
 
-  <div class="max-w-4xl mx-auto text-center">
+<div class="max-w-5xl mx-auto text-center">
 
-    <h2 class="text-5xl font-black mb-8">
-      Let's Build Something <span class="gradient-text">Amazing</span>
-    </h2>
+<h2 class="text-6xl font-black leading-tight mb-10">
+Let's Create Something
+<span class="gradient">Exceptional</span>
+</h2>
 
-    <p class="text-gray-400 text-lg leading-8 mb-12">
-      Ready to create modern digital experiences and elevate your online presence?
-    </p>
+<p class="text-gray-500 text-xl leading-9 max-w-3xl mx-auto mb-14">
+Premium digital experiences built with modern technology,
+strategic thinking, and elegant execution.
+</p>
 
-    <a href="mailto:info@andriberbudi.com"
-      class="btn-premium inline-block bg-red-600 hover:bg-red-700 transition px-10 py-5 rounded-full text-lg font-bold">
-      info@andriberbudi.com
-    </a>
+<a href="mailto:info@andriberbudi.com" class="btn-premium text-lg">
+info@andriberbudi.com
+</a>
 
-  </div>
+</div>
 
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-zinc-900 py-12 px-6">
+<footer class="py-16 px-6">
 
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
 
-    <div>
-      <h2 class="text-3xl font-black gradient-text mb-4">
-        Andri Berbudi
-      </h2>
+<div>
 
-      <p class="text-gray-500 max-w-md leading-8">
-        Web Developer & SEO Specialist focused on premium digital experiences.
-      </p>
-    </div>
+<div class="logo mb-5">
+Andri Berbudi
+</div>
 
-    <div>
+<p class="text-gray-500 max-w-md leading-8">
+Web Developer & SEO Specialist focused on building
+premium digital experiences.
+</p>
 
-      <h3 class="font-bold mb-5">
-        Social Media
-      </h3>
+</div>
 
-      <div class="flex gap-5 text-gray-400">
-        <a href="https://instagram.com/andriberbudi" target="_blank" class="hover:text-red-500 transition">
-          Instagram
-        </a>
-      </div>
+<div>
 
-    </div>
+<p class="text-sm uppercase tracking-[4px] text-gray-600 mb-5">
+Social
+</p>
 
-  </div>
+<div class="flex gap-6">
+
+<a href="https://instagram.com/andriberbudi"
+target="_blank"
+class="text-gray-400 hover:text-red-500 transition">
+Instagram
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 </footer>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
 <script>
+
+/* ========================= */
+/* TYPING */
+/* ========================= */
+
 const words = [
-  "Web Developer",
-  "SEO Specialist",
-  "Entrepreneur"
+'Web Developer',
+'SEO Specialist',
+'Entrepreneur'
 ]
 
 let i = 0
 let j = 0
-let currentWord = ""
-let isDeleting = false
+let current = ''
+let deleting = false
 
-function type() {
+function typing(){
 
-  currentWord = words[i]
+current = words[i]
 
-  if(isDeleting){
-    document.getElementById("typing").textContent =
-      currentWord.substring(0, j-1)
-    j--
-  } else {
-    document.getElementById("typing").textContent =
-      currentWord.substring(0, j+1)
-    j++
-  }
-
-  if(!isDeleting && j === currentWord.length){
-    isDeleting = true
-    setTimeout(type, 1200)
-    return
-  }
-
-  if(isDeleting && j === 0){
-    isDeleting = false
-    i++
-
-    if(i === words.length){
-      i = 0
-    }
-  }
-
-  setTimeout(type, isDeleting ? 60 : 120)
+if(deleting){
+document.getElementById('typing').textContent =
+current.substring(0,j--)
+}else{
+document.getElementById('typing').textContent =
+current.substring(0,j++)
 }
 
-type()
+if(!deleting && j === current.length + 1){
+deleting = true
+setTimeout(typing,1200)
+return
+}
 
-particlesJS("particles-js", {
-  particles: {
-    number: {
-      value: 55
-    },
-    color: {
-      value: "#ff0000"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.4
-    },
-    size: {
-      value: 3
-    },
-    line_linked: {
-      enable: true,
-      distance: 140,
-      color: "#ff0000",
-      opacity: 0.2,
-      width: 1
-    },
-    move: {
-      enable: true,
-      speed: 1.5
-    }
-  }
+if(deleting && j === 0){
+deleting = false
+i++
+
+if(i === words.length){
+i = 0
+}
+}
+
+setTimeout(typing,deleting ? 50 : 100)
+
+}
+
+typing()
+
+/* ========================= */
+/* CURSOR */
+/* ========================= */
+
+const cursor = document.querySelector('.cursor')
+const dot = document.querySelector('.cursor-dot')
+
+document.addEventListener('mousemove',(e)=>{
+
+cursor.style.left = e.clientX + 'px'
+cursor.style.top = e.clientY + 'px'
+
+dot.style.left = e.clientX + 'px'
+dot.style.top = e.clientY + 'px'
+
 })
+
 </script>
 
 </body>
