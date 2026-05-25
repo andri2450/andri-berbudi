@@ -1,6 +1,6 @@
 <!-- ===================================================== -->
-<!-- ANDRI BERBUDI - ULTRA PREMIUM CYBER LANDING PAGE -->
-<!-- FULL SINGLE FILE PHP -->
+<!-- ANDRI BERBUDI - PREMIUM PORTFOLIO PHP -->
+<!-- SINGLE FILE VERSION -->
 <!-- ===================================================== -->
 
 <!DOCTYPE html>
@@ -16,16 +16,22 @@
 <meta name="keywords" content="Andri Berbudi, Web Developer, SEO Specialist">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 
 :root{
-  --bg:#050505;
-  --red:#ff2020;
-  --soft:#9b9b9b;
+  --bg:#0a0a0a;
+  --card:#111111;
+  --border:#1d1d1d;
+  --red:#ff2b2b;
+  --soft:#8b8b8b;
 }
 
 *{
@@ -45,304 +51,272 @@ body{
   overflow-x:hidden;
 }
 
-/* ========================= */
-/* CUSTOM CURSOR */
-/* ========================= */
+/* ======================= */
+/* SCROLLBAR */
+/* ======================= */
 
-.cursor{
-  width:20px;
-  height:20px;
-  border:1px solid rgba(255,0,0,.5);
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:99999;
-  transform:translate(-50%,-50%);
-  transition:.08s linear;
-  backdrop-filter:blur(4px);
+::-webkit-scrollbar{
+  width:8px;
 }
 
-.cursor-dot{
-  width:4px;
-  height:4px;
+::-webkit-scrollbar-track{
+  background:#0a0a0a;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--red);
+  border-radius:50px;
+}
+
+/* ======================= */
+/* BACKGROUND */
+/* ======================= */
+
+.bg-glow{
+  position:fixed;
+  width:700px;
+  height:700px;
+  border-radius:50%;
   background:red;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:99999;
-  transform:translate(-50%,-50%);
+  filter:blur(180px);
+  opacity:.08;
+  top:-250px;
+  right:-250px;
+  z-index:-2;
 }
 
-/* ========================= */
-/* NOISE */
-/* ========================= */
+.bg-grid{
+  position:fixed;
+  inset:0;
+  background-image:
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  z-index:-3;
+}
 
 .noise{
   position:fixed;
   inset:0;
   background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity:.05;
+  opacity:.04;
   pointer-events:none;
-  z-index:2;
+  z-index:-1;
 }
 
-/* ========================= */
-/* GRID */
-/* ========================= */
+/* ======================= */
+/* LAYOUT */
+/* ======================= */
 
-.grid-bg{
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:60px 60px;
-  z-index:-3;
-}
-
-/* ========================= */
-/* RED GLOW */
-/* ========================= */
-
-.glow{
-  position:fixed;
-  width:800px;
-  height:800px;
-  background:red;
-  border-radius:50%;
-  filter:blur(220px);
-  opacity:.08;
-  top:-300px;
-  right:-200px;
-  z-index:-2;
-  animation:floatGlow 12s infinite ease-in-out;
-}
-
-@keyframes floatGlow{
-  0%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(50px);
-  }
-  100%{
-    transform:translateY(0);
-  }
-}
-
-/* ========================= */
-/* NAVBAR */
-/* ========================= */
-
-.nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:999;
-  backdrop-filter:blur(16px);
-  background:rgba(5,5,5,.6);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.logo{
-  font-weight:900;
-  font-size:28px;
-  background:linear-gradient(to right,#fff,#ff4b4b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* ========================= */
-/* HERO */
-/* ========================= */
-
-.hero{
+.wrapper{
+  display:grid;
+  grid-template-columns:380px 1fr;
   min-height:100vh;
-  display:flex;
-  align-items:center;
+}
+
+/* ======================= */
+/* SIDEBAR */
+/* ======================= */
+
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  border-right:1px solid rgba(255,255,255,.05);
+  padding:40px;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,.02);
+}
+
+.profile-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:30px;
+  padding:35px;
   position:relative;
   overflow:hidden;
 }
 
+.profile-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,0,0,.12), transparent);
+  opacity:.5;
+}
+
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff2b2b,#420000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  font-weight:900;
+  margin-bottom:30px;
+}
+
+.name{
+  font-size:34px;
+  font-weight:900;
+  line-height:1.1;
+  margin-bottom:15px;
+}
+
+.role{
+  color:var(--red);
+  min-height:30px;
+  font-weight:600;
+}
+
+.bio{
+  color:#777;
+  line-height:1.9;
+  margin-top:25px;
+}
+
+.socials{
+  display:flex;
+  gap:15px;
+  margin-top:30px;
+}
+
+.socials a{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:white;
+  transition:.4s;
+}
+
+.socials a:hover{
+  background:var(--red);
+  transform:translateY(-5px);
+}
+
+.contact-btn{
+  display:block;
+  width:100%;
+  padding:18px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#ff2b2b,#9c0000);
+  text-align:center;
+  text-decoration:none;
+  color:white;
+  font-weight:700;
+  margin-top:35px;
+  transition:.4s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(255,0,0,.2);
+}
+
+/* ======================= */
+/* MAIN */
+/* ======================= */
+
+.main{
+  padding:60px;
+}
+
+/* ======================= */
+/* HERO */
+/* ======================= */
+
+.hero{
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+}
+
 .hero-title{
-  font-size:110px;
+  font-size:90px;
   line-height:1;
   font-weight:900;
-  font-family:'Space Grotesk',sans-serif;
+  max-width:900px;
   letter-spacing:-4px;
 }
 
 .gradient{
-  background:linear-gradient(to right,#fff,#ff3131);
+  background:linear-gradient(to right,#fff,#ff2b2b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.subtitle{
-  font-size:26px;
-  color:#aaa;
-  margin-top:30px;
-  min-height:40px;
-}
-
 .hero-desc{
+  max-width:700px;
   color:#777;
   line-height:2;
-  max-width:700px;
   margin-top:35px;
   font-size:18px;
 }
 
-.typing{
-  border-right:3px solid red;
-  animation:blink .7s infinite;
-}
-
-@keyframes blink{
-  50%{
-    border-color:transparent;
-  }
-}
-
-/* ========================= */
-/* BUTTON */
-/* ========================= */
-
-.btn-premium{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  padding:18px 35px;
-  border-radius:100px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(135deg,#ff2020,#8b0000);
-  transition:.4s;
-  font-weight:700;
-}
-
-.btn-premium:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 60px rgba(255,0,0,.35);
-}
-
-.btn-premium::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-  transition:.8s;
-}
-
-.btn-premium:hover::before{
-  left:100%;
-}
-
-/* ========================= */
-/* FLOATING CARD */
-/* ========================= */
-
-.terminal{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(18px);
-  border-radius:30px;
-  overflow:hidden;
-  transform-style:preserve-3d;
-  animation:floatCard 6s infinite ease-in-out;
-  box-shadow:0 30px 100px rgba(255,0,0,.08);
-}
-
-@keyframes floatCard{
-  0%{
-    transform:translateY(0px);
-  }
-  50%{
-    transform:translateY(-15px);
-  }
-  100%{
-    transform:translateY(0px);
-  }
-}
-
-.terminal-top{
-  padding:18px 24px;
-  border-bottom:1px solid rgba(255,255,255,.05);
+.hero-stats{
   display:flex;
-  gap:10px;
+  gap:40px;
+  margin-top:50px;
+  flex-wrap:wrap;
 }
 
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
+.stat h3{
+  font-size:42px;
+  color:white;
+  font-weight:900;
 }
 
-.dot.red{
-  background:#ff3b30;
+.stat p{
+  color:#666;
 }
 
-.dot.yellow{
-  background:#ffcc00;
-}
-
-.dot.green{
-  background:#34c759;
-}
-
-.terminal-body{
-  padding:35px;
-  color:#32ff7e;
-  font-family:monospace;
-  line-height:2;
-  font-size:15px;
-}
-
-/* ========================= */
+/* ======================= */
 /* SECTION */
-/* ========================= */
+/* ======================= */
 
 .section{
-  padding:140px 0;
-  position:relative;
+  margin-top:140px;
 }
 
 .section-title{
-  font-size:70px;
+  font-size:52px;
   font-weight:900;
-  margin-bottom:20px;
-  letter-spacing:-3px;
+  margin-bottom:50px;
 }
 
-.section-desc{
-  color:#777;
-  line-height:2;
-  max-width:700px;
-}
-
-/* ========================= */
+/* ======================= */
 /* CARD */
-/* ========================= */
+/* ======================= */
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
 
 .card{
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.05);
-  backdrop-filter:blur(16px);
-  border-radius:30px;
-  padding:40px;
-  transition:.5s;
-  overflow:hidden;
+  border-radius:28px;
+  padding:35px;
   position:relative;
+  overflow:hidden;
+  transition:.5s;
 }
 
 .card::before{
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,rgba(255,0,0,.06),transparent);
+  background:linear-gradient(180deg, rgba(255,0,0,.08), transparent);
   opacity:0;
   transition:.5s;
 }
@@ -357,39 +331,105 @@ body{
   box-shadow:0 20px 80px rgba(255,0,0,.08);
 }
 
-/* ========================= */
-/* BIG NUMBER */
-/* ========================= */
-
-.big-number{
-  font-size:80px;
-  font-weight:900;
-  color:rgba(255,255,255,.06);
-  position:absolute;
-  right:30px;
-  top:20px;
+.card h3{
+  font-size:28px;
+  margin-bottom:20px;
 }
 
-/* ========================= */
+.card p{
+  color:#777;
+  line-height:1.9;
+}
+
+/* ======================= */
+/* BLOG */
+/* ======================= */
+
+.blog-card{
+  overflow:hidden;
+}
+
+.blog-image{
+  height:220px;
+  border-radius:20px;
+  margin-bottom:25px;
+  background:linear-gradient(135deg,#ff2b2b,#111);
+}
+
+/* ======================= */
+/* TIMELINE */
+/* ======================= */
+
+.timeline{
+  border-left:2px solid rgba(255,255,255,.08);
+  padding-left:40px;
+}
+
+.timeline-item{
+  margin-bottom:60px;
+  position:relative;
+}
+
+.timeline-item::before{
+  content:'';
+  width:18px;
+  height:18px;
+  background:var(--red);
+  border-radius:50%;
+  position:absolute;
+  left:-49px;
+  top:10px;
+}
+
+.timeline-year{
+  color:var(--red);
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+.timeline h3{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.timeline p{
+  color:#777;
+  line-height:1.9;
+}
+
+/* ======================= */
 /* FOOTER */
-/* ========================= */
+/* ======================= */
 
 footer{
+  margin-top:140px;
+  padding-top:50px;
   border-top:1px solid rgba(255,255,255,.05);
 }
 
-/* ========================= */
+/* ======================= */
 /* MOBILE */
-/* ========================= */
+/* ======================= */
 
-@media(max-width:900px){
+@media(max-width:1100px){
 
-.hero-title{
-  font-size:64px;
+.wrapper{
+  grid-template-columns:1fr;
 }
 
-.section-title{
-  font-size:48px;
+.sidebar{
+  position:relative;
+  height:auto;
+  border-right:none;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.hero-title{
+  font-size:58px;
+}
+
+.main{
+  padding:30px;
 }
 
 }
@@ -400,189 +440,214 @@ footer{
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
-
-<!-- BG -->
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
 <div class="noise"></div>
-<div class="grid-bg"></div>
-<div class="glow"></div>
 
-<!-- NAV -->
-<nav class="nav">
+<div class="wrapper">
 
-<div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-<div class="logo">
-Andri Berbudi
+<div class="profile-card">
+
+<div class="avatar">
+AB
 </div>
 
-<div class="hidden md:flex gap-10 text-sm text-gray-400">
-
-<a href="#about" class="hover:text-red-500 transition">About</a>
-<a href="#services" class="hover:text-red-500 transition">Expertise</a>
-<a href="#work" class="hover:text-red-500 transition">Works</a>
-<a href="#blog" class="hover:text-red-500 transition">Blog</a>
-
-</div>
-
-</div>
-
-</nav>
-
-<!-- HERO -->
-<section class="hero px-6">
-
-<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
-
-<!-- LEFT -->
-<div>
-
-<p class="uppercase tracking-[6px] text-red-500 mb-8">
-Digital Architect
-</p>
-
-<h1 class="hero-title mb-8">
-ANDRI <br>
-<span class="gradient">BERBUDI</span>
+<h1 class="name">
+Andri <br>
+Berbudi
 </h1>
 
-<div class="subtitle">
-<span id="typing" class="typing"></span>
+<div class="role">
+<span id="typed"></span>
 </div>
 
-<p class="hero-desc">
-Creating premium digital experiences through modern development,
-advanced SEO strategy, and elegant branding systems for businesses
-that want to stand out in the digital era.
+<p class="bio">
+Building premium digital experiences with modern development,
+SEO optimization, and elegant branding systems.
 </p>
 
-<div class="flex gap-5 mt-12 flex-wrap">
+<div class="socials">
 
-<a href="mailto:info@andriberbudi.com" class="btn-premium">
+<a href="https://instagram.com/andriberbudi" target="_blank">
+IG
+</a>
+
+<a href="#">
+GH
+</a>
+
+<a href="#">
+IN
+</a>
+
+</div>
+
+<a href="mailto:info@andriberbudi.com" class="contact-btn">
 Contact Me
 </a>
 
 </div>
 
-</div>
+</aside>
 
-<!-- RIGHT -->
+<!-- MAIN -->
+<main class="main">
+
+<!-- HERO -->
+<section class="hero">
+
 <div>
 
-<div class="terminal">
+<p class="uppercase tracking-[6px] text-red-500 mb-8">
+Premium Personal Branding
+</p>
 
-<div class="terminal-top">
-
-<div class="dot red"></div>
-<div class="dot yellow"></div>
-<div class="dot green"></div>
-
-</div>
-
-<div class="terminal-body">
-
-$ initialize profile<br><br>
-
-> Name: Andri Berbudi<br>
-> Role: Web Developer<br>
-> Expertise: SEO Specialist<br>
-> Status: Available for projects<br><br>
-
-Loading premium experience...<br>
-████████████████ 100%
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section class="section px-6" id="about">
-
-<div class="max-w-7xl mx-auto">
-
-<h2 class="section-title">
-About
+<h2 class="hero-title">
+Creating <span class="gradient">Modern Digital Experience</span>
+for ambitious brands.
 </h2>
 
-<p class="section-desc text-lg">
-I help businesses and personal brands build high-performance
-digital experiences with modern websites, SEO optimization,
-and elegant branding systems designed for growth.
+<p class="hero-desc">
+I help businesses and creators build elegant websites,
+improve SEO visibility, and establish powerful online identity
+through modern technology and premium design systems.
 </p>
+
+<div class="hero-stats">
+
+<div class="stat">
+<h3>5+</h3>
+<p>Years Experience</p>
+</div>
+
+<div class="stat">
+<h3>100+</h3>
+<p>Projects Done</p>
+</div>
+
+<div class="stat">
+<h3>98%</h3>
+<p>Client Satisfaction</p>
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 <!-- SERVICES -->
-<section class="section px-6" id="services">
-
-<div class="max-w-7xl mx-auto">
+<section class="section">
 
 <h2 class="section-title">
 Expertise
 </h2>
 
-<div class="grid lg:grid-cols-3 gap-8 mt-20">
+<div class="card-grid">
 
-<div class="card">
+<div class="card" data-aos="fade-up">
 
-<div class="big-number">
-01
-</div>
-
-<h3 class="text-3xl font-bold mb-6">
+<h3>
 Website Development
 </h3>
 
-<p class="text-gray-500 leading-8">
-Modern high-performance websites with elegant interface
-and scalable architecture.
+<p>
+Modern responsive websites with elegant interface
+and high performance architecture.
 </p>
 
 </div>
 
-<div class="card">
+<div class="card" data-aos="fade-up" data-aos-delay="100">
 
-<div class="big-number">
-02
-</div>
-
-<h3 class="text-3xl font-bold mb-6">
+<h3>
 SEO Optimization
 </h3>
 
-<p class="text-gray-500 leading-8">
-Technical SEO and strategic optimization
-to improve ranking and visibility.
+<p>
+Technical SEO strategy to improve visibility,
+ranking, and organic traffic growth.
 </p>
 
 </div>
 
-<div class="card">
+<div class="card" data-aos="fade-up" data-aos-delay="200">
 
-<div class="big-number">
-03
-</div>
-
-<h3 class="text-3xl font-bold mb-6">
-Brand Identity
+<h3>
+Digital Branding
 </h3>
 
-<p class="text-gray-500 leading-8">
-Professional digital branding systems
-for modern businesses and creators.
+<p>
+Premium visual identity and modern branding
+for creators and businesses.
 </p>
 
 </div>
+
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section">
+
+<h2 class="section-title">
+Experience
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2026
+</div>
+
+<h3>
+Senior Web Developer
+</h3>
+
+<p>
+Building premium business websites and scalable
+digital systems for modern companies.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2024
+</div>
+
+<h3>
+SEO Specialist
+</h3>
+
+<p>
+Helping brands improve online visibility through
+technical and content optimization.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2022
+</div>
+
+<h3>
+Freelance Developer
+</h3>
+
+<p>
+Started building modern landing pages and
+professional portfolio websites.
+</p>
 
 </div>
 
@@ -591,63 +656,54 @@ for modern businesses and creators.
 </section>
 
 <!-- BLOG -->
-<section class="section px-6" id="blog">
-
-<div class="max-w-7xl mx-auto">
+<section class="section">
 
 <h2 class="section-title">
-Insights
+Latest Insights
 </h2>
 
-<div class="grid lg:grid-cols-3 gap-8 mt-20">
+<div class="card-grid">
 
-<div class="card">
+<div class="card blog-card" data-aos="fade-up">
 
-<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
-SEO
-</p>
+<div class="blog-image"></div>
 
-<h3 class="text-3xl font-bold leading-tight mb-6">
-Why Technical SEO Still Matters
+<h3>
+Why Modern Websites Increase Conversion
 </h3>
 
-<p class="text-gray-500 leading-8">
-Modern SEO strategies for long-term digital growth.
+<p>
+Premium UI and fast performance improve trust
+and business growth.
 </p>
 
 </div>
 
-<div class="card">
+<div class="card blog-card" data-aos="fade-up" data-aos-delay="100">
 
-<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
-Development
-</p>
+<div class="blog-image"></div>
 
-<h3 class="text-3xl font-bold leading-tight mb-6">
-Building Premium User Experience
+<h3>
+Advanced SEO for Competitive Niches
 </h3>
 
-<p class="text-gray-500 leading-8">
-How elegant UI increases trust and conversion.
+<p>
+Technical optimization strategy for long-term ranking.
 </p>
 
 </div>
 
-<div class="card">
+<div class="card blog-card" data-aos="fade-up" data-aos-delay="200">
 
-<p class="text-red-500 mb-5 uppercase tracking-[3px] text-sm">
-Branding
-</p>
+<div class="blog-image"></div>
 
-<h3 class="text-3xl font-bold leading-tight mb-6">
+<h3>
 Personal Branding for Developers
 </h3>
 
-<p class="text-gray-500 leading-8">
-Build authority and credibility in digital industry.
+<p>
+Build authority and increase digital opportunities.
 </p>
-
-</div>
 
 </div>
 
@@ -656,49 +712,46 @@ Build authority and credibility in digital industry.
 </section>
 
 <!-- CTA -->
-<section class="section px-6">
+<section class="section text-center">
 
-<div class="max-w-5xl mx-auto text-center">
-
-<h2 class="text-6xl font-black leading-tight mb-10">
-Let's Create Something
+<h2 class="hero-title text-[70px] leading-none mb-10">
+Let's Build Something
 <span class="gradient">Exceptional</span>
 </h2>
 
-<p class="text-gray-500 text-xl leading-9 max-w-3xl mx-auto mb-14">
-Premium digital experiences built with modern technology,
-strategic thinking, and elegant execution.
+<p class="hero-desc mx-auto">
+Premium digital experiences crafted with modern technology,
+creative thinking, and elegant execution.
 </p>
 
-<a href="mailto:info@andriberbudi.com" class="btn-premium text-lg">
+<a href="mailto:info@andriberbudi.com"
+class="contact-btn inline-block w-auto px-10 mt-10">
 info@andriberbudi.com
 </a>
-
-</div>
 
 </section>
 
 <!-- FOOTER -->
-<footer class="py-16 px-6">
+<footer>
 
-<div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12">
+<div class="flex flex-col md:flex-row justify-between gap-10">
 
 <div>
 
-<div class="logo mb-5">
+<h2 class="text-3xl font-black mb-4 gradient">
 Andri Berbudi
-</div>
+</h2>
 
 <p class="text-gray-500 max-w-md leading-8">
-Web Developer & SEO Specialist focused on building
-premium digital experiences.
+Web Developer & SEO Specialist focused on
+modern premium digital experiences.
 </p>
 
 </div>
 
 <div>
 
-<p class="text-sm uppercase tracking-[4px] text-gray-600 mb-5">
+<p class="uppercase tracking-[4px] text-gray-600 mb-5">
 Social
 </p>
 
@@ -718,71 +771,26 @@ Instagram
 
 </footer>
 
+</main>
+
+</div>
+
 <script>
 
-/* ========================= */
-/* TYPING */
-/* ========================= */
-
-const words = [
+new Typed('#typed', {
+strings: [
 'Web Developer',
 'SEO Specialist',
 'Entrepreneur'
-]
+],
+typeSpeed: 60,
+backSpeed: 40,
+loop: true
+})
 
-let i = 0
-let j = 0
-let current = ''
-let deleting = false
-
-function typing(){
-
-current = words[i]
-
-if(deleting){
-document.getElementById('typing').textContent =
-current.substring(0,j--)
-}else{
-document.getElementById('typing').textContent =
-current.substring(0,j++)
-}
-
-if(!deleting && j === current.length + 1){
-deleting = true
-setTimeout(typing,1200)
-return
-}
-
-if(deleting && j === 0){
-deleting = false
-i++
-
-if(i === words.length){
-i = 0
-}
-}
-
-setTimeout(typing,deleting ? 50 : 100)
-
-}
-
-typing()
-
-/* ========================= */
-/* CURSOR */
-/* ========================= */
-
-const cursor = document.querySelector('.cursor')
-const dot = document.querySelector('.cursor-dot')
-
-document.addEventListener('mousemove',(e)=>{
-
-cursor.style.left = e.clientX + 'px'
-cursor.style.top = e.clientY + 'px'
-
-dot.style.left = e.clientX + 'px'
-dot.style.top = e.clientY + 'px'
-
+AOS.init({
+duration:1000,
+once:true
 })
 
 </script>
