@@ -1,7 +1,7 @@
-<!-- ===================================================== -->
-<!-- ANDRI BERBUDI - PREMIUM PORTFOLIO PHP -->
-<!-- SINGLE FILE VERSION -->
-<!-- ===================================================== -->
+<!-- ========================================================= -->
+<!-- ANDRI BERBUDI - ULTRA ELEGANT PREMIUM PORTFOLIO -->
+<!-- SINGLE FILE PHP VERSION -->
+<!-- ========================================================= -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,27 +12,38 @@
 
 <title>Andri Berbudi | Web Developer & SEO Specialist</title>
 
-<meta name="description" content="Andri Berbudi - Premium Personal Branding Website">
+<meta name="description" content="Premium personal branding website of Andri Berbudi.">
 <meta name="keywords" content="Andri Berbudi, Web Developer, SEO Specialist">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 
+/* ========================================================= */
+/* ROOT */
+/* ========================================================= */
+
 :root{
-  --bg:#0a0a0a;
-  --card:#111111;
-  --border:#1d1d1d;
-  --red:#ff2b2b;
-  --soft:#8b8b8b;
+  --bg:#070707;
+  --card:rgba(255,255,255,0.03);
+  --card2:rgba(255,255,255,0.02);
+  --border:rgba(255,255,255,0.08);
+
+  --red:#ff3c3c;
+  --red-soft:#ff6a6a;
+
+  --text:#ffffff;
+  --soft:#8f8f8f;
 }
+
+/* ========================================================= */
+/* RESET */
+/* ========================================================= */
 
 *{
   margin:0;
@@ -51,39 +62,26 @@ body{
   overflow-x:hidden;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* SCROLLBAR */
-/* ======================= */
+/* ========================================================= */
 
 ::-webkit-scrollbar{
   width:8px;
 }
 
 ::-webkit-scrollbar-track{
-  background:#0a0a0a;
+  background:#090909;
 }
 
 ::-webkit-scrollbar-thumb{
-  background:var(--red);
-  border-radius:50px;
+  background:linear-gradient(var(--red),#8f0000);
+  border-radius:20px;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* BACKGROUND */
-/* ======================= */
-
-.bg-glow{
-  position:fixed;
-  width:700px;
-  height:700px;
-  border-radius:50%;
-  background:red;
-  filter:blur(180px);
-  opacity:.08;
-  top:-250px;
-  right:-250px;
-  z-index:-2;
-}
+/* ========================================================= */
 
 .bg-grid{
   position:fixed;
@@ -92,7 +90,7 @@ body{
   linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
   linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size:60px 60px;
-  z-index:-3;
+  z-index:-4;
 }
 
 .noise{
@@ -100,224 +98,437 @@ body{
   inset:0;
   background-image:url('https://grainy-gradients.vercel.app/noise.svg');
   opacity:.04;
+  z-index:-3;
   pointer-events:none;
-  z-index:-1;
 }
 
-/* ======================= */
+.glow-1{
+  position:fixed;
+  width:800px;
+  height:800px;
+  background:red;
+  filter:blur(220px);
+  opacity:.08;
+  top:-250px;
+  right:-300px;
+  z-index:-2;
+}
+
+.glow-2{
+  position:fixed;
+  width:600px;
+  height:600px;
+  background:#5f0000;
+  filter:blur(180px);
+  opacity:.12;
+  bottom:-250px;
+  left:-250px;
+  z-index:-2;
+}
+
+/* ========================================================= */
 /* LAYOUT */
-/* ======================= */
+/* ========================================================= */
 
 .wrapper{
   display:grid;
-  grid-template-columns:380px 1fr;
+  grid-template-columns:400px 1fr;
   min-height:100vh;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* SIDEBAR */
-/* ======================= */
+/* ========================================================= */
 
 .sidebar{
   position:sticky;
   top:0;
   height:100vh;
-  border-right:1px solid rgba(255,255,255,.05);
   padding:40px;
-  overflow:hidden;
-  backdrop-filter:blur(12px);
+  border-right:1px solid rgba(255,255,255,.05);
+  backdrop-filter:blur(20px);
   background:rgba(255,255,255,.02);
 }
 
 .profile-card{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.05);
-  border-radius:30px;
-  padding:35px;
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.02)
+  );
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(20px);
+
+  border-radius:34px;
+
+  padding:40px;
+
   position:relative;
+
   overflow:hidden;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.3),
+  0 0 80px rgba(255,0,0,.05);
 }
 
 .profile-card::before{
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(255,0,0,.12), transparent);
-  opacity:.5;
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(255,0,0,.15),
+    transparent 40%
+  );
 }
 
+/* ========================================================= */
+/* AVATAR */
+/* ========================================================= */
+
 .avatar{
-  width:120px;
-  height:120px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ff2b2b,#420000);
+  width:130px;
+  height:130px;
+
+  border-radius:32px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #ff3c3c,
+    #2b0000
+  );
+
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:42px;
+
+  font-size:44px;
   font-weight:900;
-  margin-bottom:30px;
+
+  margin-bottom:35px;
+
+  box-shadow:
+  0 0 40px rgba(255,0,0,.25);
 }
 
+/* ========================================================= */
+/* TYPOGRAPHY */
+/* ========================================================= */
+
 .name{
-  font-size:34px;
+  font-size:42px;
+  line-height:.95;
+  letter-spacing:-3px;
   font-weight:900;
-  line-height:1.1;
-  margin-bottom:15px;
+  margin-bottom:18px;
+
+  font-family:'Space Grotesk',sans-serif;
 }
 
 .role{
-  color:var(--red);
-  min-height:30px;
+  color:var(--red-soft);
   font-weight:600;
+  min-height:32px;
+  font-size:18px;
 }
 
 .bio{
-  color:#777;
-  line-height:1.9;
-  margin-top:25px;
+  margin-top:28px;
+  color:#7d7d7d;
+  line-height:2;
 }
+
+/* ========================================================= */
+/* SOCIAL */
+/* ========================================================= */
 
 .socials{
   display:flex;
   gap:15px;
-  margin-top:30px;
+  margin-top:35px;
 }
 
 .socials a{
-  width:45px;
-  height:45px;
-  border-radius:14px;
+  width:50px;
+  height:50px;
+
+  border-radius:18px;
+
   background:rgba(255,255,255,.04);
+
+  border:1px solid rgba(255,255,255,.05);
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-decoration:none;
+
   color:white;
-  transition:.4s;
+
+  transition:
+  transform .5s cubic-bezier(.22,1,.36,1),
+  border-color .5s,
+  box-shadow .5s;
 }
 
 .socials a:hover{
-  background:var(--red);
-  transform:translateY(-5px);
+  transform:translateY(-6px);
+
+  border-color:rgba(255,0,0,.3);
+
+  box-shadow:
+  0 10px 30px rgba(255,0,0,.12);
+
+  background:rgba(255,0,0,.08);
 }
 
-.contact-btn{
+/* ========================================================= */
+/* BUTTON */
+/* ========================================================= */
+
+.btn{
   display:block;
-  width:100%;
-  padding:18px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#ff2b2b,#9c0000);
-  text-align:center;
-  text-decoration:none;
-  color:white;
-  font-weight:700;
+
   margin-top:35px;
-  transition:.4s;
+
+  padding:18px;
+
+  border-radius:22px;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  color:white;
+
+  font-weight:700;
+
+  background:
+  linear-gradient(
+    135deg,
+    var(--red),
+    #7c0000
+  );
+
+  position:relative;
+
+  overflow:hidden;
+
+  transition:
+  transform .5s cubic-bezier(.22,1,.36,1),
+  box-shadow .5s;
 }
 
-.contact-btn:hover{
+.btn::before{
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:-100%;
+
+  width:100%;
+  height:100%;
+
+  background:
+  linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.2),
+    transparent
+  );
+
+  transition:.8s;
+}
+
+.btn:hover::before{
+  left:100%;
+}
+
+.btn:hover{
   transform:translateY(-5px);
-  box-shadow:0 15px 40px rgba(255,0,0,.2);
+
+  box-shadow:
+  0 20px 40px rgba(255,0,0,.25);
 }
 
-/* ======================= */
+/* ========================================================= */
 /* MAIN */
-/* ======================= */
+/* ========================================================= */
 
 .main{
-  padding:60px;
+  padding:70px;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* HERO */
-/* ======================= */
+/* ========================================================= */
 
 .hero{
-  min-height:80vh;
+  min-height:90vh;
+
   display:flex;
   align-items:center;
+
+  position:relative;
+}
+
+.hero::before{
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(255,0,0,.10),
+    transparent 40%
+  );
 }
 
 .hero-title{
-  font-size:90px;
-  line-height:1;
+  font-size:110px;
+
+  line-height:.92;
+
   font-weight:900;
+
+  letter-spacing:-6px;
+
   max-width:900px;
-  letter-spacing:-4px;
+
+  font-family:'Space Grotesk',sans-serif;
 }
 
 .gradient{
-  background:linear-gradient(to right,#fff,#ff2b2b);
+  background:
+  linear-gradient(
+    to right,
+    #fff,
+    var(--red)
+  );
+
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .hero-desc{
-  max-width:700px;
-  color:#777;
-  line-height:2;
-  margin-top:35px;
+  margin-top:40px;
+
+  color:#7d7d7d;
+
+  line-height:2.1;
+
   font-size:18px;
+
+  max-width:760px;
 }
 
-.hero-stats{
+/* ========================================================= */
+/* STATS */
+/* ========================================================= */
+
+.stats{
   display:flex;
-  gap:40px;
-  margin-top:50px;
+  gap:50px;
+  margin-top:60px;
   flex-wrap:wrap;
 }
 
 .stat h3{
-  font-size:42px;
-  color:white;
+  font-size:54px;
   font-weight:900;
+  line-height:1;
 }
 
 .stat p{
   color:#666;
+  margin-top:10px;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* SECTION */
-/* ======================= */
+/* ========================================================= */
 
 .section{
-  margin-top:140px;
+  margin-top:150px;
 }
 
 .section-title{
-  font-size:52px;
+  font-size:62px;
+
   font-weight:900;
-  margin-bottom:50px;
+
+  letter-spacing:-4px;
+
+  margin-bottom:60px;
+
+  font-family:'Space Grotesk',sans-serif;
 }
 
-/* ======================= */
-/* CARD */
-/* ======================= */
+/* ========================================================= */
+/* GRID */
+/* ========================================================= */
 
-.card-grid{
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
 }
 
+/* ========================================================= */
+/* CARD */
+/* ========================================================= */
+
 .card{
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.05);
-  border-radius:28px;
-  padding:35px;
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.02)
+  );
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(20px);
+
+  border-radius:34px;
+
+  padding:40px;
+
   position:relative;
+
   overflow:hidden;
-  transition:.5s;
+
+  transition:
+  transform .5s cubic-bezier(.22,1,.36,1),
+  border-color .5s,
+  box-shadow .5s;
 }
 
 .card::before{
   content:'';
+
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(255,0,0,.08), transparent);
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(255,0,0,.15),
+    transparent 40%
+  );
+
   opacity:0;
+
   transition:.5s;
 }
 
@@ -326,90 +537,78 @@ body{
 }
 
 .card:hover{
-  transform:translateY(-10px);
-  border-color:rgba(255,0,0,.2);
-  box-shadow:0 20px 80px rgba(255,0,0,.08);
+  transform:translateY(-12px);
+
+  border-color:rgba(255,0,0,.18);
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.4),
+  0 0 80px rgba(255,0,0,.08);
 }
 
 .card h3{
-  font-size:28px;
+  font-size:32px;
   margin-bottom:20px;
+  font-weight:800;
 }
 
 .card p{
-  color:#777;
-  line-height:1.9;
+  color:#7d7d7d;
+  line-height:2;
 }
 
-/* ======================= */
+/* ========================================================= */
 /* BLOG */
-/* ======================= */
+/* ========================================================= */
 
-.blog-card{
+.blog-image{
+  height:240px;
+
+  border-radius:24px;
+
+  margin-bottom:30px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #ff3c3c,
+    #120000
+  );
+
+  position:relative;
+
   overflow:hidden;
 }
 
-.blog-image{
-  height:220px;
-  border-radius:20px;
-  margin-bottom:25px;
-  background:linear-gradient(135deg,#ff2b2b,#111);
-}
-
-/* ======================= */
-/* TIMELINE */
-/* ======================= */
-
-.timeline{
-  border-left:2px solid rgba(255,255,255,.08);
-  padding-left:40px;
-}
-
-.timeline-item{
-  margin-bottom:60px;
-  position:relative;
-}
-
-.timeline-item::before{
+.blog-image::before{
   content:'';
-  width:18px;
-  height:18px;
-  background:var(--red);
-  border-radius:50%;
+
   position:absolute;
-  left:-49px;
-  top:10px;
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(255,255,255,.15),
+    transparent 50%
+  );
 }
 
-.timeline-year{
-  color:var(--red);
-  margin-bottom:12px;
-  font-weight:700;
-}
-
-.timeline h3{
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.timeline p{
-  color:#777;
-  line-height:1.9;
-}
-
-/* ======================= */
+/* ========================================================= */
 /* FOOTER */
-/* ======================= */
+/* ========================================================= */
 
 footer{
-  margin-top:140px;
+  margin-top:150px;
+
   padding-top:50px;
+
   border-top:1px solid rgba(255,255,255,.05);
 }
 
-/* ======================= */
+/* ========================================================= */
 /* MOBILE */
-/* ======================= */
+/* ========================================================= */
 
 @media(max-width:1100px){
 
@@ -424,12 +623,17 @@ footer{
   border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-.hero-title{
-  font-size:58px;
-}
-
 .main{
   padding:30px;
+}
+
+.hero-title{
+  font-size:62px;
+  letter-spacing:-3px;
+}
+
+.section-title{
+  font-size:48px;
 }
 
 }
@@ -441,8 +645,9 @@ footer{
 <body>
 
 <div class="bg-grid"></div>
-<div class="bg-glow"></div>
 <div class="noise"></div>
+<div class="glow-1"></div>
+<div class="glow-2"></div>
 
 <div class="wrapper">
 
@@ -465,8 +670,8 @@ Berbudi
 </div>
 
 <p class="bio">
-Building premium digital experiences with modern development,
-SEO optimization, and elegant branding systems.
+Helping brands and businesses build premium digital
+experiences through modern development and strategic SEO.
 </p>
 
 <div class="socials">
@@ -485,7 +690,7 @@ IN
 
 </div>
 
-<a href="mailto:info@andriberbudi.com" class="contact-btn">
+<a href="mailto:info@andriberbudi.com" class="btn">
 Contact Me
 </a>
 
@@ -506,26 +711,26 @@ Premium Personal Branding
 </p>
 
 <h2 class="hero-title">
-Creating <span class="gradient">Modern Digital Experience</span>
-for ambitious brands.
+Creating <span class="gradient">Elegant Digital Experience</span>
+for modern brands.
 </h2>
 
 <p class="hero-desc">
-I help businesses and creators build elegant websites,
-improve SEO visibility, and establish powerful online identity
-through modern technology and premium design systems.
+I specialize in modern website development,
+advanced SEO optimization, and luxury digital branding
+for businesses that want to stand out in the online world.
 </p>
 
-<div class="hero-stats">
-
-<div class="stat">
-<h3>5+</h3>
-<p>Years Experience</p>
-</div>
+<div class="stats">
 
 <div class="stat">
 <h3>100+</h3>
 <p>Projects Done</p>
+</div>
+
+<div class="stat">
+<h3>5+</h3>
+<p>Years Experience</p>
 </div>
 
 <div class="stat">
@@ -546,107 +751,43 @@ through modern technology and premium design systems.
 Expertise
 </h2>
 
-<div class="card-grid">
+<div class="grid">
 
-<div class="card" data-aos="fade-up">
+<div class="card">
 
 <h3>
 Website Development
 </h3>
 
 <p>
-Modern responsive websites with elegant interface
-and high performance architecture.
+Premium responsive websites with elegant UI,
+high performance, and modern architecture.
 </p>
 
 </div>
 
-<div class="card" data-aos="fade-up" data-aos-delay="100">
+<div class="card">
 
 <h3>
 SEO Optimization
 </h3>
 
 <p>
-Technical SEO strategy to improve visibility,
-ranking, and organic traffic growth.
+Technical and strategic SEO optimization
+to improve ranking and digital visibility.
 </p>
 
 </div>
 
-<div class="card" data-aos="fade-up" data-aos-delay="200">
+<div class="card">
 
 <h3>
 Digital Branding
 </h3>
 
 <p>
-Premium visual identity and modern branding
-for creators and businesses.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section">
-
-<h2 class="section-title">
-Experience
-</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-
-<div class="timeline-year">
-2026
-</div>
-
-<h3>
-Senior Web Developer
-</h3>
-
-<p>
-Building premium business websites and scalable
-digital systems for modern companies.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-year">
-2024
-</div>
-
-<h3>
-SEO Specialist
-</h3>
-
-<p>
-Helping brands improve online visibility through
-technical and content optimization.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<div class="timeline-year">
-2022
-</div>
-
-<h3>
-Freelance Developer
-</h3>
-
-<p>
-Started building modern landing pages and
-professional portfolio websites.
+Luxury digital branding and visual identity
+for businesses and personal brands.
 </p>
 
 </div>
@@ -662,47 +803,49 @@ professional portfolio websites.
 Latest Insights
 </h2>
 
-<div class="card-grid">
+<div class="grid">
 
-<div class="card blog-card" data-aos="fade-up">
+<div class="card">
 
 <div class="blog-image"></div>
 
 <h3>
-Why Modern Websites Increase Conversion
+Why Premium UI Increases Conversion
 </h3>
 
 <p>
-Premium UI and fast performance improve trust
-and business growth.
+Modern elegant interfaces create better trust
+and stronger brand perception.
 </p>
 
 </div>
 
-<div class="card blog-card" data-aos="fade-up" data-aos-delay="100">
+<div class="card">
 
 <div class="blog-image"></div>
 
 <h3>
-Advanced SEO for Competitive Niches
+Advanced SEO Strategy in 2026
 </h3>
 
 <p>
-Technical optimization strategy for long-term ranking.
+Technical SEO remains the foundation
+of long-term digital growth.
 </p>
 
 </div>
 
-<div class="card blog-card" data-aos="fade-up" data-aos-delay="200">
+<div class="card">
 
 <div class="blog-image"></div>
 
 <h3>
-Personal Branding for Developers
+Building Modern Personal Branding
 </h3>
 
 <p>
-Build authority and increase digital opportunities.
+Professional digital presence increases
+credibility and business opportunities.
 </p>
 
 </div>
@@ -714,18 +857,18 @@ Build authority and increase digital opportunities.
 <!-- CTA -->
 <section class="section text-center">
 
-<h2 class="hero-title text-[70px] leading-none mb-10">
+<h2 class="hero-title text-[78px] leading-none mb-10">
 Let's Build Something
 <span class="gradient">Exceptional</span>
 </h2>
 
 <p class="hero-desc mx-auto">
-Premium digital experiences crafted with modern technology,
-creative thinking, and elegant execution.
+Premium digital experiences crafted with strategy,
+modern technology, and elegant execution.
 </p>
 
 <a href="mailto:info@andriberbudi.com"
-class="contact-btn inline-block w-auto px-10 mt-10">
+class="btn inline-block w-auto px-12 mt-12">
 info@andriberbudi.com
 </a>
 
@@ -734,28 +877,28 @@ info@andriberbudi.com
 <!-- FOOTER -->
 <footer>
 
-<div class="flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col lg:flex-row justify-between gap-10">
 
 <div>
 
-<h2 class="text-3xl font-black mb-4 gradient">
+<h2 class="text-4xl font-black mb-4 gradient">
 Andri Berbudi
 </h2>
 
 <p class="text-gray-500 max-w-md leading-8">
 Web Developer & SEO Specialist focused on
-modern premium digital experiences.
+premium digital experiences.
 </p>
 
 </div>
 
 <div>
 
-<p class="uppercase tracking-[4px] text-gray-600 mb-5">
+<p class="uppercase tracking-[5px] text-gray-600 mb-5">
 Social
 </p>
 
-<div class="flex gap-6">
+<div class="flex gap-8">
 
 <a href="https://instagram.com/andriberbudi"
 target="_blank"
@@ -778,19 +921,14 @@ Instagram
 <script>
 
 new Typed('#typed', {
-strings: [
+strings:[
 'Web Developer',
 'SEO Specialist',
 'Entrepreneur'
 ],
-typeSpeed: 60,
-backSpeed: 40,
-loop: true
-})
-
-AOS.init({
-duration:1000,
-once:true
+typeSpeed:60,
+backSpeed:40,
+loop:true
 })
 
 </script>
