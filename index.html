@@ -1,10 +1,6 @@
-<!-- ========================================================= -->
-<!-- ANDRI BERBUDI - ULTRA ELEGANT PREMIUM PORTFOLIO -->
-<!-- SINGLE FILE PHP VERSION -->
-<!-- ========================================================= -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -12,628 +8,721 @@
 
 <title>Andri Berbudi | Web Developer & SEO Specialist</title>
 
-<meta name="description" content="Premium personal branding website of Andri Berbudi.">
+<meta name="description" content="Premium personal branding website of Andri Berbudi">
 <meta name="keywords" content="Andri Berbudi, Web Developer, SEO Specialist">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 <style>
 
-/* ========================================================= */
+/* ====================================================== */
 /* ROOT */
-/* ========================================================= */
+/* ====================================================== */
 
 :root{
-  --bg:#070707;
-  --card:rgba(255,255,255,0.03);
-  --card2:rgba(255,255,255,0.02);
-  --border:rgba(255,255,255,0.08);
 
-  --red:#ff3c3c;
-  --red-soft:#ff6a6a;
+--bg:#0c0c0d;
+--sidebar:#111113;
+--card:#161618;
+--border:#252529;
 
-  --text:#ffffff;
-  --soft:#8f8f8f;
+--red:#ef4444;
+
+--text:#ffffff;
+--soft:#8d8d92;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* RESET */
-/* ========================================================= */
+/* ====================================================== */
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-  background:var(--bg);
-  color:white;
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
+
+background:var(--bg);
+color:white;
+
+font-family:'Poppins',sans-serif;
+
+overflow-x:hidden;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* SCROLLBAR */
-/* ========================================================= */
+/* ====================================================== */
 
 ::-webkit-scrollbar{
-  width:8px;
+width:6px;
 }
 
 ::-webkit-scrollbar-track{
-  background:#090909;
+background:#090909;
 }
 
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(var(--red),#8f0000);
-  border-radius:20px;
+background:var(--red);
+border-radius:50px;
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* BACKGROUND */
-/* ========================================================= */
+/* ====================================================== */
 
-.bg-grid{
-  position:fixed;
-  inset:0;
-  background-image:
-  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size:60px 60px;
-  z-index:-4;
+.bg-lines{
+
+position:fixed;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+
+background-size:60px 60px;
+
+z-index:-3;
+
+}
+
+.glow{
+
+position:fixed;
+
+width:700px;
+height:700px;
+
+background:red;
+
+filter:blur(220px);
+
+opacity:.06;
+
+top:-300px;
+right:-250px;
+
+z-index:-2;
+
 }
 
 .noise{
-  position:fixed;
-  inset:0;
-  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity:.04;
-  z-index:-3;
-  pointer-events:none;
+
+position:fixed;
+inset:0;
+
+background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+
+opacity:.03;
+
+z-index:-1;
+
+pointer-events:none;
+
 }
 
-.glow-1{
-  position:fixed;
-  width:800px;
-  height:800px;
-  background:red;
-  filter:blur(220px);
-  opacity:.08;
-  top:-250px;
-  right:-300px;
-  z-index:-2;
-}
-
-.glow-2{
-  position:fixed;
-  width:600px;
-  height:600px;
-  background:#5f0000;
-  filter:blur(180px);
-  opacity:.12;
-  bottom:-250px;
-  left:-250px;
-  z-index:-2;
-}
-
-/* ========================================================= */
+/* ====================================================== */
 /* LAYOUT */
-/* ========================================================= */
+/* ====================================================== */
 
 .wrapper{
-  display:grid;
-  grid-template-columns:400px 1fr;
-  min-height:100vh;
+
+display:grid;
+grid-template-columns:340px 1fr;
+
+min-height:100vh;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* SIDEBAR */
-/* ========================================================= */
+/* ====================================================== */
 
 .sidebar{
-  position:sticky;
-  top:0;
-  height:100vh;
-  padding:40px;
-  border-right:1px solid rgba(255,255,255,.05);
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,.02);
+
+position:sticky;
+top:0;
+
+height:100vh;
+
+padding:30px;
+
+background:var(--sidebar);
+
+border-right:1px solid rgba(255,255,255,.05);
+
 }
 
 .profile-card{
-  background:
-  linear-gradient(
-    180deg,
-    rgba(255,255,255,.05),
-    rgba(255,255,255,.02)
-  );
 
-  border:1px solid rgba(255,255,255,.08);
+background:var(--card);
 
-  backdrop-filter:blur(20px);
+border:1px solid var(--border);
 
-  border-radius:34px;
+border-radius:28px;
 
-  padding:40px;
+padding:35px;
 
-  position:relative;
+position:relative;
 
-  overflow:hidden;
+overflow:hidden;
 
-  box-shadow:
-  0 10px 40px rgba(0,0,0,.3),
-  0 0 80px rgba(255,0,0,.05);
 }
 
 .profile-card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-  radial-gradient(
-    circle at top right,
-    rgba(255,0,0,.15),
-    transparent 40%
-  );
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.03),
+transparent
+);
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* AVATAR */
-/* ========================================================= */
+/* ====================================================== */
 
 .avatar{
-  width:130px;
-  height:130px;
 
-  border-radius:32px;
+width:120px;
+height:120px;
 
-  background:
-  linear-gradient(
-    135deg,
-    #ff3c3c,
-    #2b0000
-  );
+border-radius:24px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+background:
+linear-gradient(
+135deg,
+#ef4444,
+#3d0b0b
+);
 
-  font-size:44px;
-  font-weight:900;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  margin-bottom:35px;
+font-size:42px;
+font-weight:800;
 
-  box-shadow:
-  0 0 40px rgba(255,0,0,.25);
+margin-bottom:30px;
+
 }
 
-/* ========================================================= */
-/* TYPOGRAPHY */
-/* ========================================================= */
+/* ====================================================== */
+/* NAME */
+/* ====================================================== */
 
 .name{
-  font-size:42px;
-  line-height:.95;
-  letter-spacing:-3px;
-  font-weight:900;
-  margin-bottom:18px;
 
-  font-family:'Space Grotesk',sans-serif;
+font-size:34px;
+font-weight:700;
+
+line-height:1.1;
+
+margin-bottom:15px;
+
 }
 
 .role{
-  color:var(--red-soft);
-  font-weight:600;
-  min-height:32px;
-  font-size:18px;
+
+font-family:'Courier Prime',monospace;
+
+color:var(--red);
+
+font-size:15px;
+
+min-height:24px;
+
 }
 
 .bio{
-  margin-top:28px;
-  color:#7d7d7d;
-  line-height:2;
+
+margin-top:25px;
+
+font-size:14px;
+
+line-height:2;
+
+color:var(--soft);
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
+/* INFO */
+/* ====================================================== */
+
+.info{
+
+margin-top:30px;
+
+display:flex;
+flex-direction:column;
+gap:15px;
+
+}
+
+.info-item{
+
+display:flex;
+justify-content:space-between;
+
+font-size:14px;
+
+padding-bottom:12px;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.info-item span:last-child{
+color:var(--soft);
+}
+
+/* ====================================================== */
 /* SOCIAL */
-/* ========================================================= */
+/* ====================================================== */
 
 .socials{
-  display:flex;
-  gap:15px;
-  margin-top:35px;
+
+display:flex;
+gap:12px;
+
+margin-top:30px;
+
 }
 
 .socials a{
-  width:50px;
-  height:50px;
 
-  border-radius:18px;
+width:42px;
+height:42px;
 
-  background:rgba(255,255,255,.04);
+border-radius:14px;
 
-  border:1px solid rgba(255,255,255,.05);
+background:#1a1a1d;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  text-decoration:none;
+text-decoration:none;
 
-  color:white;
+color:white;
 
-  transition:
-  transform .5s cubic-bezier(.22,1,.36,1),
-  border-color .5s,
-  box-shadow .5s;
+transition:.4s;
+
 }
 
 .socials a:hover{
-  transform:translateY(-6px);
 
-  border-color:rgba(255,0,0,.3);
+background:var(--red);
 
-  box-shadow:
-  0 10px 30px rgba(255,0,0,.12);
+transform:translateY(-4px);
 
-  background:rgba(255,0,0,.08);
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* BUTTON */
-/* ========================================================= */
+/* ====================================================== */
 
 .btn{
-  display:block;
 
-  margin-top:35px;
+display:block;
 
-  padding:18px;
+margin-top:35px;
 
-  border-radius:22px;
+padding:16px;
 
-  text-align:center;
+border-radius:16px;
 
-  text-decoration:none;
+text-align:center;
 
-  color:white;
+text-decoration:none;
 
-  font-weight:700;
+color:white;
 
-  background:
-  linear-gradient(
-    135deg,
-    var(--red),
-    #7c0000
-  );
+font-size:14px;
+font-weight:600;
 
-  position:relative;
+background:
+linear-gradient(
+135deg,
+#ef4444,
+#7f1d1d
+);
 
-  overflow:hidden;
+transition:.4s;
 
-  transition:
-  transform .5s cubic-bezier(.22,1,.36,1),
-  box-shadow .5s;
-}
-
-.btn::before{
-  content:'';
-
-  position:absolute;
-
-  top:0;
-  left:-100%;
-
-  width:100%;
-  height:100%;
-
-  background:
-  linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.2),
-    transparent
-  );
-
-  transition:.8s;
-}
-
-.btn:hover::before{
-  left:100%;
 }
 
 .btn:hover{
-  transform:translateY(-5px);
 
-  box-shadow:
-  0 20px 40px rgba(255,0,0,.25);
+transform:translateY(-4px);
+
+box-shadow:
+0 10px 30px rgba(239,68,68,.2);
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* MAIN */
-/* ========================================================= */
+/* ====================================================== */
 
 .main{
-  padding:70px;
+
+padding:60px;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* HERO */
-/* ========================================================= */
+/* ====================================================== */
 
 .hero{
-  min-height:90vh;
 
-  display:flex;
-  align-items:center;
+min-height:90vh;
 
-  position:relative;
+display:flex;
+align-items:center;
+
 }
 
-.hero::before{
-  content:'';
+.hero-sub{
 
-  position:absolute;
-  inset:0;
+font-family:'Courier Prime',monospace;
 
-  background:
-  radial-gradient(
-    circle at top right,
-    rgba(255,0,0,.10),
-    transparent 40%
-  );
+color:var(--red);
+
+margin-bottom:20px;
+
+font-size:15px;
+
 }
 
 .hero-title{
-  font-size:110px;
 
-  line-height:.92;
+font-size:82px;
 
-  font-weight:900;
+line-height:1;
 
-  letter-spacing:-6px;
+font-weight:700;
 
-  max-width:900px;
+max-width:900px;
 
-  font-family:'Space Grotesk',sans-serif;
+margin-bottom:35px;
+
 }
 
-.gradient{
-  background:
-  linear-gradient(
-    to right,
-    #fff,
-    var(--red)
-  );
+.hero-title span{
 
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+color:var(--red);
+
 }
 
 .hero-desc{
-  margin-top:40px;
 
-  color:#7d7d7d;
+max-width:700px;
 
-  line-height:2.1;
+line-height:2;
 
-  font-size:18px;
+color:var(--soft);
 
-  max-width:760px;
+font-size:16px;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* STATS */
-/* ========================================================= */
+/* ====================================================== */
 
 .stats{
-  display:flex;
-  gap:50px;
-  margin-top:60px;
-  flex-wrap:wrap;
+
+display:flex;
+gap:50px;
+
+margin-top:50px;
+
+flex-wrap:wrap;
+
 }
 
 .stat h3{
-  font-size:54px;
-  font-weight:900;
-  line-height:1;
+
+font-size:42px;
+
+font-weight:700;
+
 }
 
 .stat p{
-  color:#666;
-  margin-top:10px;
+
+margin-top:10px;
+
+color:var(--soft);
+
+font-size:14px;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* SECTION */
-/* ========================================================= */
+/* ====================================================== */
 
 .section{
-  margin-top:150px;
+
+margin-top:140px;
+
 }
 
 .section-title{
-  font-size:62px;
 
-  font-weight:900;
+font-size:52px;
 
-  letter-spacing:-4px;
+font-weight:700;
 
-  margin-bottom:60px;
+margin-bottom:50px;
 
-  font-family:'Space Grotesk',sans-serif;
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* GRID */
-/* ========================================================= */
+/* ====================================================== */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* CARD */
-/* ========================================================= */
+/* ====================================================== */
 
 .card{
-  background:
-  linear-gradient(
-    180deg,
-    rgba(255,255,255,.05),
-    rgba(255,255,255,.02)
-  );
 
-  border:1px solid rgba(255,255,255,.08);
+background:var(--card);
 
-  backdrop-filter:blur(20px);
+border:1px solid var(--border);
 
-  border-radius:34px;
+border-radius:28px;
 
-  padding:40px;
+padding:35px;
 
-  position:relative;
+transition:.5s;
 
-  overflow:hidden;
+position:relative;
 
-  transition:
-  transform .5s cubic-bezier(.22,1,.36,1),
-  border-color .5s,
-  box-shadow .5s;
+overflow:hidden;
+
 }
 
 .card::before{
-  content:'';
 
-  position:absolute;
-  inset:0;
+content:'';
 
-  background:
-  radial-gradient(
-    circle at top right,
-    rgba(255,0,0,.15),
-    transparent 40%
-  );
+position:absolute;
+inset:0;
 
-  opacity:0;
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.02),
+transparent
+);
 
-  transition:.5s;
+opacity:0;
+
+transition:.5s;
+
 }
 
 .card:hover::before{
-  opacity:1;
+opacity:1;
 }
 
 .card:hover{
-  transform:translateY(-12px);
 
-  border-color:rgba(255,0,0,.18);
+transform:translateY(-8px);
 
-  box-shadow:
-  0 20px 60px rgba(0,0,0,.4),
-  0 0 80px rgba(255,0,0,.08);
+border-color:rgba(239,68,68,.2);
+
+box-shadow:
+0 15px 50px rgba(0,0,0,.3);
+
 }
 
 .card h3{
-  font-size:32px;
-  margin-bottom:20px;
-  font-weight:800;
+
+font-size:26px;
+
+margin-bottom:18px;
+
 }
 
 .card p{
-  color:#7d7d7d;
-  line-height:2;
+
+color:var(--soft);
+
+line-height:2;
+
+font-size:15px;
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
+/* TIMELINE */
+/* ====================================================== */
+
+.timeline{
+
+border-left:1px solid rgba(255,255,255,.08);
+
+padding-left:40px;
+
+}
+
+.timeline-item{
+
+margin-bottom:60px;
+
+position:relative;
+
+}
+
+.timeline-item::before{
+
+content:'';
+
+width:14px;
+height:14px;
+
+border-radius:50%;
+
+background:var(--red);
+
+position:absolute;
+
+left:-47px;
+top:5px;
+
+}
+
+.timeline-year{
+
+font-family:'Courier Prime',monospace;
+
+color:var(--red);
+
+margin-bottom:15px;
+
+}
+
+.timeline h3{
+
+font-size:28px;
+
+margin-bottom:15px;
+
+}
+
+.timeline p{
+
+color:var(--soft);
+
+line-height:2;
+
+}
+
+/* ====================================================== */
 /* BLOG */
-/* ========================================================= */
+/* ====================================================== */
 
 .blog-image{
-  height:240px;
 
-  border-radius:24px;
+height:220px;
 
-  margin-bottom:30px;
+border-radius:22px;
 
-  background:
-  linear-gradient(
-    135deg,
-    #ff3c3c,
-    #120000
-  );
+background:
+linear-gradient(
+135deg,
+#ef4444,
+#120909
+);
 
-  position:relative;
+margin-bottom:25px;
 
-  overflow:hidden;
 }
 
-.blog-image::before{
-  content:'';
-
-  position:absolute;
-  inset:0;
-
-  background:
-  radial-gradient(
-    circle at top right,
-    rgba(255,255,255,.15),
-    transparent 50%
-  );
-}
-
-/* ========================================================= */
+/* ====================================================== */
 /* FOOTER */
-/* ========================================================= */
+/* ====================================================== */
 
 footer{
-  margin-top:150px;
 
-  padding-top:50px;
+margin-top:140px;
 
-  border-top:1px solid rgba(255,255,255,.05);
+padding-top:40px;
+
+border-top:1px solid rgba(255,255,255,.05);
+
 }
 
-/* ========================================================= */
+/* ====================================================== */
 /* MOBILE */
-/* ========================================================= */
+/* ====================================================== */
 
 @media(max-width:1100px){
 
 .wrapper{
-  grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 
 .sidebar{
-  position:relative;
-  height:auto;
-  border-right:none;
-  border-bottom:1px solid rgba(255,255,255,.05);
+
+position:relative;
+
+height:auto;
+
+border-right:none;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
 }
 
 .main{
-  padding:30px;
+padding:30px;
 }
 
 .hero-title{
-  font-size:62px;
-  letter-spacing:-3px;
+font-size:56px;
 }
 
 .section-title{
-  font-size:48px;
+font-size:42px;
 }
 
 }
@@ -644,10 +733,9 @@ footer{
 
 <body>
 
-<div class="bg-grid"></div>
+<div class="bg-lines"></div>
+<div class="glow"></div>
 <div class="noise"></div>
-<div class="glow-1"></div>
-<div class="glow-2"></div>
 
 <div class="wrapper">
 
@@ -670,9 +758,29 @@ Berbudi
 </div>
 
 <p class="bio">
-Helping brands and businesses build premium digital
-experiences through modern development and strategic SEO.
+Web Developer & SEO Specialist focused on
+building elegant digital experiences and
+modern personal branding.
 </p>
+
+<div class="info">
+
+<div class="info-item">
+<span>Residence</span>
+<span>Indonesia</span>
+</div>
+
+<div class="info-item">
+<span>Experience</span>
+<span>5+ Years</span>
+</div>
+
+<div class="info-item">
+<span>Freelance</span>
+<span>Available</span>
+</div>
+
+</div>
 
 <div class="socials">
 
@@ -706,26 +814,27 @@ Contact Me
 
 <div>
 
-<p class="uppercase tracking-[6px] text-red-500 mb-8">
-Premium Personal Branding
+<p class="hero-sub">
+&lt; Premium Personal Branding /&gt;
 </p>
 
 <h2 class="hero-title">
-Creating <span class="gradient">Elegant Digital Experience</span>
-for modern brands.
+Building Modern
+<span>Digital Experience</span>
+for ambitious brands.
 </h2>
 
 <p class="hero-desc">
-I specialize in modern website development,
-advanced SEO optimization, and luxury digital branding
-for businesses that want to stand out in the online world.
+I help businesses and creators build premium websites,
+improve SEO visibility, and create modern digital branding
+that feels elegant, professional, and high-converting.
 </p>
 
 <div class="stats">
 
 <div class="stat">
 <h3>100+</h3>
-<p>Projects Done</p>
+<p>Projects Completed</p>
 </div>
 
 <div class="stat">
@@ -748,7 +857,7 @@ for businesses that want to stand out in the online world.
 <section class="section">
 
 <h2 class="section-title">
-Expertise
+My Expertise
 </h2>
 
 <div class="grid">
@@ -760,8 +869,8 @@ Website Development
 </h3>
 
 <p>
-Premium responsive websites with elegant UI,
-high performance, and modern architecture.
+Premium responsive websites with elegant design,
+modern UI, and high-performance architecture.
 </p>
 
 </div>
@@ -773,8 +882,8 @@ SEO Optimization
 </h3>
 
 <p>
-Technical and strategic SEO optimization
-to improve ranking and digital visibility.
+Technical and strategic SEO optimization to improve
+ranking, traffic, and digital visibility.
 </p>
 
 </div>
@@ -786,8 +895,72 @@ Digital Branding
 </h3>
 
 <p>
-Luxury digital branding and visual identity
+Luxury digital branding systems and modern visual
+identity for ambitious businesses.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section">
+
+<h2 class="section-title">
+Experience
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2026
+</div>
+
+<h3>
+Senior Web Developer
+</h3>
+
+<p>
+Creating premium digital products and modern websites
 for businesses and personal brands.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2024
+</div>
+
+<h3>
+SEO Specialist
+</h3>
+
+<p>
+Helping brands improve search visibility through
+technical and content optimization strategies.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<div class="timeline-year">
+2022
+</div>
+
+<h3>
+Freelance Developer
+</h3>
+
+<p>
+Started building landing pages and portfolio websites
+for creators and startups.
 </p>
 
 </div>
@@ -810,12 +983,12 @@ Latest Insights
 <div class="blog-image"></div>
 
 <h3>
-Why Premium UI Increases Conversion
+Why Modern UI Improves Conversion
 </h3>
 
 <p>
-Modern elegant interfaces create better trust
-and stronger brand perception.
+Elegant interfaces increase trust and create better
+user engagement.
 </p>
 
 </div>
@@ -829,8 +1002,8 @@ Advanced SEO Strategy in 2026
 </h3>
 
 <p>
-Technical SEO remains the foundation
-of long-term digital growth.
+Technical SEO remains essential for long-term
+digital growth.
 </p>
 
 </div>
@@ -840,12 +1013,12 @@ of long-term digital growth.
 <div class="blog-image"></div>
 
 <h3>
-Building Modern Personal Branding
+Personal Branding for Developers
 </h3>
 
 <p>
-Professional digital presence increases
-credibility and business opportunities.
+Build authority and credibility through modern
+digital presence.
 </p>
 
 </div>
@@ -857,18 +1030,18 @@ credibility and business opportunities.
 <!-- CTA -->
 <section class="section text-center">
 
-<h2 class="hero-title text-[78px] leading-none mb-10">
+<h2 class="hero-title text-[70px] leading-none mb-10">
 Let's Build Something
-<span class="gradient">Exceptional</span>
+<span>Exceptional</span>
 </h2>
 
 <p class="hero-desc mx-auto">
-Premium digital experiences crafted with strategy,
-modern technology, and elegant execution.
+Premium digital experience crafted with modern technology,
+strategy, and elegant execution.
 </p>
 
 <a href="mailto:info@andriberbudi.com"
-class="btn inline-block w-auto px-12 mt-12">
+class="btn inline-block w-auto px-12 mt-10">
 info@andriberbudi.com
 </a>
 
@@ -881,21 +1054,21 @@ info@andriberbudi.com
 
 <div>
 
-<h2 class="text-4xl font-black mb-4 gradient">
+<h2 class="text-3xl font-bold mb-4">
 Andri Berbudi
 </h2>
 
 <p class="text-gray-500 max-w-md leading-8">
-Web Developer & SEO Specialist focused on
-premium digital experiences.
+Web Developer & SEO Specialist focused on premium
+digital experiences.
 </p>
 
 </div>
 
 <div>
 
-<p class="uppercase tracking-[5px] text-gray-600 mb-5">
-Social
+<p class="text-gray-500 mb-5">
+Social Media
 </p>
 
 <div class="flex gap-8">
@@ -920,15 +1093,18 @@ Instagram
 
 <script>
 
-new Typed('#typed', {
+new Typed('#typed',{
+
 strings:[
 'Web Developer',
 'SEO Specialist',
 'Entrepreneur'
 ],
+
 typeSpeed:60,
 backSpeed:40,
 loop:true
+
 })
 
 </script>
